@@ -1,0 +1,27 @@
+ECHO is on.
+*.pyc
+*.pyo
+*.pyd
+*.swp
+.ipynb_checkpoints/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log
+/.streamlit/*
+*.sqlite
+*.pkl
+env/*
+evnvMv/*
+Moviefiles/*
+src/*
+ipynb/*
+.env/*
+new_env/*
+environment/*
+env/*
+evnvMv/*
+new_env/*
+Moviefiles/*
+src/*
