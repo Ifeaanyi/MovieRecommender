@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages
+from setuptools import setup, find_packages # type: ignore
 
 # Reading the long description from README.md
 with open("README.md", "r", encoding="utf-8") as fh:
@@ -21,5 +21,5 @@ setup(
     packages=find_packages(where=SRC_REPO),  # Automatically find packages in the specified directory
     python_requires='>=3.7',  # Minimum Python version required
     install_requires=LIST_OF_REQUIREMENTS,  # List of dependencies
-    url='https://github.com/Ifeaanyi/Movie-Reccomendation-system',  # Repository URL
+    url='https://github.com/Ifeaanyi/MovieRecommender',  # Repository URL
 )

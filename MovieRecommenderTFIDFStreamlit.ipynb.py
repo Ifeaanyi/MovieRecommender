@@ -2,7 +2,7 @@
 #Importing relevant libraries 
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt # type: ignore
 
 
 # Assuming the CSV is in the same directory as your script or inside a folder like 'data/'
@@ -143,7 +143,7 @@ Movies.head()
 
 
 # Import the spaCy library for natural language processing
-import spacy
+import spacy # type: ignore
 
 # Load the spaCy language model
 nlp = spacy.load("en_core_web_sm")
@@ -186,7 +186,7 @@ MoviesTFIDF = MoviesTFIDF.drop(columns=['tags_no_stopwords'])
 
 
 # Import TfidfVectorizer for converting text to numerical features
-from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer # type: ignore
 
 # Initialize the TfidfVectorizer with a limit on max features
 tfidf_vectorizer = TfidfVectorizer(max_features=5000)  # Retain the top 5000 terms based on TF-IDF scores
@@ -199,8 +199,8 @@ print(tfidf_matrix.shape)
 
 
 
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.feature_extraction.text import TfidfVectorizer # type: ignore
+from sklearn.metrics.pairwise import cosine_similarity # type: ignore
 
 # Step 1: Initialize the TfidfVectorizer
 tfidf_vectorizer = TfidfVectorizer()
