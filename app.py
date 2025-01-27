@@ -7,6 +7,15 @@ import streamlit as st  # type: ignore
 # Load environment variables from .env file
 load_dotenv()
 
+# Cache the movie list and similarity matrix loading
+@st.cache_data
+def load_movie_data():
+    movies = pickle.load(open('Moviefiles/movie_list.pkl', 'rb'))
+    similiarity = pickle.load(open('Moviefiles/similiarity.pkl', 'rb'))
+    return movies, similiarity
+
+# Cache the poster-fetching function
+@st.cache_resource
 def fetch_poster(movie_id): 
     # Fetch the API key from the .env file
     api_key = os.getenv("API_KEY")
@@ -18,7 +27,7 @@ def fetch_poster(movie_id):
         full_path = f"http://image.tmdb.org/t/p/w500/{poster_path}" 
     else: 
         full_path = "https://via.placeholder.com/500x750.png?text=No+Image" 
-    return full_path 
+    return full_path
  
 def get_movie_recommendations(movie_title, movies, cosine_sim_df, top_n=5): 
     if movie_title not in movies['title'].values: 
@@ -41,15 +50,14 @@ def get_movie_recommendations(movie_title, movies, cosine_sim_df, top_n=5):
 # Streamlit App Code 
 st.title('Movie Recommendation System') 
  
-# Load movies and similarity data 
-movies = pickle.load(open('Moviefiles/movie_list.pkl', 'rb')) 
-similiarity = pickle.load(open('Moviefiles/similiarity.pkl', 'rb')) 
+# Load movies and similarity data using cached function
+movies, similiarity = load_movie_data()
  
 # Get the list of movie titles for the select box 
 movie_list = movies['title'].values 
 selected_movie = st.selectbox('Type or select a movie to get recommendations:', movie_list) 
  
-# Button to show recommendations 
+# Button to show recommendations
 if st.button('Show Recommendations'): 
     recommended_movies_name, recommended_movies_poster = get_movie_recommendations(selected_movie, movies, similiarity) 
  
